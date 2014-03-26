@@ -6,13 +6,14 @@ python scripts for analysing admittance and impedance circles
 These are postprcessing scripts I wrote for postprocessing resonator characterisation data. I worked on a resonator driven by a piezoelectric transducer and I needed to analyse frequency sweep data long after recording far away from the lab and any network analyser or LCR meter.
 
 ####contents:
-- `helpers.py` contains a class for reading data and some plotting, but also some functions for filtering and Q-factor determination
+- `helpers.py` contains a class for reading data, called `DataContainer`, and some plotting, but also some functions for filtering and Q-factor determination
 - `ZYCircle.py` contains the class for analysing admittance and impedance circles
 - `simple_plot_calls.py`: demo for plotting utilities of the `DataContainer` class
 - `fit_xycircles_demo1.py`: simplest use case of analysing admittance and impedance circles
 - `fit_xycircles_demo2.py`: automatic frequency interval detection of the fit-relevant data subset
 - `fit_xycircles_demo3.py`: data exchange between Y-circle instance and Z-circle instance, more analysis quantities can then be computed
-- `luxury_smooth_demo.py`: this is a sort of filter that might be of some interest. It shows the performance of a data smoothing function I programmed (not nicely though) which has the ability of cleaning a lot of noise while not suffering from two sometimes important drawbacks: it doesn't broaden peaks like a simple lowpass, and it doesn't turn poles into wavelets.
+- `luxury_smooth_demo.py`: this is a sort of filter that might be of some general interest also outside the context of transducer analysis. The demo shows the performance of that data smoothing function I programmed (not nicely though) which has the ability of cleaning a lot of noise while not suffering from two sometimes important drawbacks: it doesn't broaden peaks like a simple lowpass, and it doesn't turn poles into wavelets.
+- there are some test data sets located in the folder `data` which are needed by the demo scripts
 
 
 ####References:
