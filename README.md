@@ -3,7 +3,32 @@ zycircle
 
 python scripts for analysing admittance and impedance circles
 
-These are postprcessing scripts I wrote for postprocessing resonator characterisation data. I worked on a resonator driven by a piezoelectric transducer and I needed to analyse frequency sweep data long after recording far away from the lab and any network analyser or LCR meter.
+These are postprcessing scripts I wrote for postprocessing characterisation data recorded from a resonator driven by a piezoelectric transducer. The coordinates and characteristic frequencies of admittance and impedance circles can tell you a lot about a transducer. Piezoelectric transducers can often be represented by such an equivalent circuit:
+~~~~~~ python
+             |
+             |
+       o-----o-----o
+       |           |
+       |           Z   R
+       |           Z
+       |           |
+ C_0  ===          S   L
+       |           S
+       |           |
+       |          ===  C
+       |           |
+       o-----o-----o
+             |
+             |
+~~~~~
+Here, the R-L-C branch represents the spring-mass system of the piezoelectric transducer in which energy sloshes back and forth between the two forms of elastic deformation and kinetic energy. The other branch with the parallel capacitance C_0 (also called parasitic capacitance) stands for the AC leak path existing because cables and electrodes act as a capacitor of some size (as I so far understand it).
+
+Admittance circles are the "Rosetta stone of transducer analysis", because the equivalent circuit quantities can be easily determined from them. But why should one be interested in manually examining admittance and impedance circles? Why not simply use an LCR-meter or network analyser? Well, maybe
+- you want to be in control of which data points are used for curve or circle fitting,
+- using a network analyser you only get the end result in terms of sizes of L, C, R, and some errors or deviations but you never get to see the fitted curves or circles plotted on the actual data,
+- you want to backcheck the performance of your network analyser on poor data and gain more trust in it, or
+- (my motivation is somewhat more embarassing) you learn that a look at admittance circles would make sense only long after the measurement campaign.
+
 
 ####contents:
 - `helpers.py` contains a class for reading data, called `DataContainer`, and some plotting, but also some functions for filtering and Q-factor determination
