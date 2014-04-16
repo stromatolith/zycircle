@@ -469,12 +469,14 @@ class ZYCircle(object):
         else: plt.savefig(join(self.sdc.plotpath,'c{}_fitted_{}_circle'.format(self.sdc.case,self.ZorY)+suffix+'.png'), dpi=240)
         plt.close()
 
-    def plot_overview_B(self,suffix='',ansize=8,anspread=0.15,anmode='quarters',datbg=True,datbgsource=None):
+    def plot_overview_B(self,suffix='',ansize=8,anspread=0.15,anmode='quarters',datbg=True,datbgsource=None,checkring=False):
         self.start_plot()
         if datbg: # data background desired
             self.plot_bg_data(datbgsource=datbgsource)
         #self.plot_data()
         self.plot_fitcircle()
+        if checkring:
+            self.plot_checkring()
         idxlist=self.to_be_annotated(anmode)
         self.annotate_data_points(idxlist,ansize,anspread)
         self.plot_characteristic_freqs(annotate=True,size=ansize,spread=anspread)
@@ -556,6 +558,20 @@ class ZYCircle(object):
         circy=r*sin(t) + cy
         self.ax.plot(circx,circy,'g-')
         self.ax.plot([cx],[cy],'gx',ms=12)
+
+    def plot_checkring(self):
+        """
+        scepticism: better check back whether the analysis results make sense, therefore let's
+        proove to ourself that the equivalent circuit recreates the fitted Y- and Z-circles
+        """
+        w=2*pi*self.f; i=1j
+        R,L,C,C0 = self.aqd['R'],self.aqd['L'],self.aqd['C'],self.aqd['C01']
+        Y = i*w*C0 + 1./( R + i*w*L + 1./(i*w*C))
+        Z=1./Y
+        if self.ZorY=='Y':
+            self.ax.plot(Y.real,Y.imag,'r--')
+        if self.ZorY=='Z':
+            self.ax.plot(Z.real,Z.imag,'r--')
 
     def annotate_data_points(self,indices,size=8,spread=0.15):
         ofs=self.annotation_offsets(indices,factor=spread,xshift=0.15)
