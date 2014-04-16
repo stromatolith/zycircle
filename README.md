@@ -31,8 +31,8 @@ Admittance circles are the "Rosetta stone of transducer analysis", because the e
 - (my motivation is somewhat more embarassing) you learn that a look at admittance circles would make sense only long after the measurement campaign.
 
 Where does the actual formula crunching happen?
-- The class `ZYCircle` contains a method `find_frequencies()`, here the characteristic frequencies (max real value, max magnitude, cutting real axis) are determined.
-- The class `ZYCircle` has the methods `analyse_admittance_circle()` and `analyse_impedance_circle()`, here happens all the important maths. The result values are stored in python dictionaries.
+- The class `ZYCircle` contains a method `find_frequencies()`, here the characteristic frequencies (where max real value, max magnitude, cutting real axis, etc.) are determined.
+- The class `ZYCircle` has the methods `analyse_admittance_circle()` and `analyse_impedance_circle()`, here happens all the important maths. The result values are stored in python dictionaries allowing a slim printout function.
 
 
 ####contents:
