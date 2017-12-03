@@ -4,7 +4,7 @@ zycircle
 **python scripts for analysing admittance and impedance circles**
 
 These are postprcessing scripts I wrote for postprocessing characterisation data recorded from a resonator driven by a piezoelectric transducer. The coordinates and characteristic frequencies of admittance and impedance circles can tell you a lot about a transducer. Piezoelectric transducers can often be represented by such an equivalent circuit:
-~~~~~~ python
+```
              |
              |
        o-----o-----o
@@ -20,7 +20,7 @@ These are postprcessing scripts I wrote for postprocessing characterisation data
        o-----o-----o
              |
              |
-~~~~~
+```
 Here, the R-L-C branch represents the spring-mass system of the piezoelectric transducer in which energy sloshes back and forth between the two forms of elastic deformation and kinetic energy. The other branch with the parallel capacitance C_0 (also called parasitic capacitance) stands for the AC leak path existing because cables and electrodes act as a capacitor of some size (as I understand it so far).
 
 Admittance circles are the "Rosetta stone of transducer analysis", because the equivalent circuit quantities can be easily determined from them. But why should one be interested in manually examining admittance and impedance circles? Why not simply use an LCR-meter or network analyser? Well, maybe
@@ -35,7 +35,7 @@ Where does the actual formula crunching happen?
 - The class `ZYCircle` has the methods `analyse_admittance_circle()` and `analyse_impedance_circle()`, here happens all the important maths. The result values are stored in python dictionaries allowing a slim printout function.
 
 
-####contents:
+#### contents:
 - `helpers.py` contains a class for reading data, called `DataContainer`, and some plotting, but also some functions for filtering and Q-factor determination
 - `ZYCircle.py` contains the class for analysing admittance and impedance circles
 - `simple_plot_calls.py`: demo for plotting utilities of the `DataContainer` class
@@ -47,10 +47,10 @@ Where does the actual formula crunching happen?
 - there are some test data sets located in the folder `data` which are needed by the demo scripts
 
 
-####References:
+#### References:
 
 I compiled the formulae after having found them here:
-
+```
 @article{ieee_std177_1966,
 	title = {{IEEE} Standard Definitions and Methods of Measurement for Piezoelectric Vibrators},
 	doi = {10.1109/IEEESTD.1966.120168},
@@ -85,3 +85,4 @@ I compiled the formulae after having found them here:
 	year = {2010},
 	pages = {1--9}
 }
+```
