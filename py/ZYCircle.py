@@ -19,7 +19,7 @@ from numpy import linspace, argmin, argmax, fabs, zeros, angle, absolute, arange
 from pylab import plt, cm
 from scipy.signal import butter, filtfilt
 from scipy.optimize import fmin, fmin_powell
-from uncertainties import ufloat, Variable as uVar, umath
+from uncertainties import ufloat, umath
 #import shack_postprocessing_routines as spr
 
 def peak_sides(dat,thr=0.3,nwin=3):
